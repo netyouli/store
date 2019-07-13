@@ -17,7 +17,7 @@
 
 ## Installation
 
-* 1.Run `npm i store --save`
+* 1.Run `npm i h5store --save`
 * 2.`import store from 'h5store'`
 
 ## Getting started  
