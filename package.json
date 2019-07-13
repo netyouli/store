@@ -1,0 +1,35 @@
+{
+  "name": "store",
+  "version": "1.0.0",
+  "description": "A react、vue、module data store for h5 web",
+  "main": "store.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netyouli/store.git"
+  },
+  "keywords": [
+    "react-native",
+    "react-native-component",
+    "react-native-store",
+    "react-native-whc-store",
+    "store",
+    "cache",
+    "whc-store",
+    "store-ios",
+    "store-android",
+    "react-component",
+    "ios",
+    "android"
+  ],
+  "author": "wuhaichao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/netyouli/store/issues"
+  },
+  "peerDependencies": {},
+  "homepage": "https://github.com/netyouli/store#readme",
+  "dependencies": {}
+}
