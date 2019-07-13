@@ -1,10 +1,10 @@
-# stroe
+# h5store
 这是带有过期时间的h5数据存储组件支持sessionStorage，localStorage
 
 ### 该存储组件可以用方便数据读取
 
 [ ![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/netyouli/store/pulls)
-[ ![NPM version](http://img.shields.io/npm/v/react-whc-notification.svg?style=flat)](https://www.npmjs.com/package/store)
+[ ![NPM version](http://img.shields.io/npm/v/h5store.svg?style=flat)](https://www.npmjs.com/package/store)
 [![License MIT](http://img.shields.io/badge/license-MIT-orange.svg?style=flat)](https://raw.githubusercontent.com/crazycodeboy/store/master/LICENSE)
 
 
@@ -18,7 +18,7 @@
 ## Installation
 
 * 1.Run `npm i store --save`
-* 2.`import store from 'store'`
+* 2.`import store from 'h5store'`
 
 ## Getting started  
 
@@ -28,50 +28,50 @@ Add `store` to your js file.
 
 sessionStorage use:
 ```javascript
- // save
- store.sset('key', value);
+// save
+store.sset('key', value);
 
- // read
- const value = store.sget('key');
+// read
+const value = store.sget('key');
 
- // read set default value {}
- const value = store.sget('key', {});
+// read set default value {}
+const value = store.sget('key', {});
 
- // delete 
- store.sset('key', null);
+// delete 
+store.sset('key', null);
 
- // clear
- store.sclear();
+// clear
+store.sclear();
 ```
 
 sessionStorage expiration time use:
 ```javascript
- // save set expiration time 1m
- store.sset('key', value, 1000 * 60);
+// save set expiration time 1m
+store.sset('key', value, 1000 * 60);
 ```
 
 localStorage use:
 ```javascript
- // save
- store.lset('key', value);
+// save
+store.lset('key', value);
 
- // read
- const value = store.lget('key');
+// read
+const value = store.lget('key');
 
- // read set default value {}
- const value = store.lget('key', {});
+// read set default value {}
+const value = store.lget('key', {});
 
- // delete 
- store.lset('key', null);
+// delete 
+store.lset('key', null);
 
- // clear
- store.lclear();
+// clear
+store.lclear();
 ```
 
 localStorage expiration time use:
 ```javascript
- // save set expiration time 1m
- store.lset('key', value, 1000 * 60);
+// save set expiration time 1m
+store.lset('key', value, 1000 * 60);
 ```
 
 
@@ -98,3 +98,4 @@ Pull requests are welcome. If you want to change API or making something big bet
 ---
 
 **MIT Licensed**
+
