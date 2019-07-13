@@ -1,5 +1,5 @@
 {
-  "name": "store",
+  "name": "h5store",
   "version": "1.0.0",
   "description": "A react、vue、module data store for h5 web",
   "main": "store.js",
