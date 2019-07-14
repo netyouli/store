@@ -1,5 +1,5 @@
 ///  Created by WHC on 19/07/13.
-//  Copyright © 2017年 WHC. All rights reserved.
+//  Copyright © 2019年 WHC. All rights reserved.
 //
 //  Github <https://github.com/netyouli/store>
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,15 +21,76 @@
 // THE SOFTWARE.
 
  /**
-  * 数据缓存
+  * 数据存储
   */
  export default class Store {
     static __store = new store();
+    /** 扫描周期 */
+    static scanInterval = 60 * 1000;
+
     constructor() {
         /** 内存存储 */
         this.__smap = new Map();
         this.__lmap = new Map();
+        this.__addStoreTnterval();
     }
+
+    /** 添加清理时钟 */
+    __addStoreTnterval = () => {
+        if (this.__interval != void 0) {
+            clearInterval(this.__interval);
+        }
+        this.__interval = setInterval(() => {
+            this.__autoClearExpiresStore(sessionStorage);
+            this.__autoClearExpiresStore(localStorage);
+        }, Store.scanInterval);
+    };
+
+    /** 自动清理过期存储 */
+    __autoClearExpiresStore = (store = null) => {
+        if (store != null) {
+            const len = store.length;
+            const sclearKeys = new Array();
+            const lclearKeys = new Array();
+            let hasExpireStore = false;
+            for (let i = 0; i < len; i++) {
+                const key = store.key(i);
+                const valueStr = store.getItem(key);
+                let value = null;
+                try {
+                    value = JSON.parse(valueStr);
+                }catch(e) {
+                    value = valueStr;
+                }
+                if (value != void 0) {
+                    const {
+                        ___storeExpires__ = null,
+                    } = value;
+                    if (___storeExpires__ != null) {
+                        hasExpireStore = true;
+                        const date = new Date();
+                        if (___storeExpires__ <= date.getTime()) {
+                            if (store === localStorage) {
+                                lclearKeys.push(key);
+                            }else {
+                                sclearKeys.push(key);
+                            }
+                        }
+                    }
+                }
+            }
+            sclearKeys.forEach(key => {
+                Store.sset(key, null);
+            });
+            lclearKeys.forEach(key => {
+                Store.lset(key, null);
+            });
+            if (!hasExpireStore) {
+                clearInterval(this.__interval);
+                this.__interval = null;
+            }
+        }
+    };
 
     /**
      * 处理生成过期时间
@@ -39,6 +100,7 @@
             if (typeof(msec) == 'number') {
                 const exp = new Date();
                 exp.setTime(exp.getTime() + msec * 1);  
+                this.__store.__addStoreTnterval();
                 return {
                     ___storeExpires__: exp.getTime(),
                     value: v,

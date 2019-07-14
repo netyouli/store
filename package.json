@@ -1,6 +1,6 @@
 {
   "name": "h5store",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A react、vue、module data store for h5 web",
   "main": "store.js",
   "scripts": {
@@ -17,6 +17,7 @@
     "react-native-whc-store",
     "store",
     "cache",
+    "h5store",
     "whc-store",
     "store-ios",
     "store-android",
