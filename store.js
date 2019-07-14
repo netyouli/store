@@ -138,6 +138,8 @@
                     return defaultValue;
                 }
             }
+        }else {
+            return defaultValue;
         }
         return value;
     };
